@@ -20,21 +20,20 @@ public class UserDaoImpl implements UserDao{
 
 	public List<User> queryUserAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("UserDao.queryUserAll");
 	}
 
 	public void insertUser(User user) {
-		// TODO Auto-generated method stub
+		sqlSession.insert("UserDao.insertUser", user);
 		
 	}
 
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
-		
+		sqlSession.update("UserDao.updateUser", user);
 	}
 
 	public void deleteUser(String id) {
-		// TODO Auto-generated method stub
+		sqlSession.delete("UserDao.deleteUser", id);
 		
 	}
 

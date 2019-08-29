@@ -5,6 +5,56 @@
     <select id="queryUserById" parameterType="int" resultType="demo.entity.User">
         select * from tb_user where id = #{id}
     </select>
-    
-    
+	<select id="queryUserAll" resultType="demo.entity.User">
+		select * from tb_user
+	</select>
+	
+	<update id="updateUser" parameterType="demo.entity.User">
+		update tb_user
+		<trim prefix="set" suffixOverrides=",">
+			<if test="userName!=null">user_name=#{userName},</if>   
+			<if test="password!=null">password=#{password},</if>
+			<if test="name!=null">name=#{name},</if>
+			<if test="age!=null">age=#{age},</if>
+			<if test="sex!=null">sex=#{sex},</if>
+			<if test="birthday!=null">birthday=#{birthday},</if>
+			updated = now()
+		</trim>
+			
+		where id = #{id}
+	
+	</update>
+	
+	<insert id="insertUser" parameterType="demo.entity.User">
+		insert into tb_user (
+		id,
+		user_name,
+		password,
+		name,
+		age,
+		sex,
+		birthday,
+        created,
+        updated
+        		
+		)		
+		values
+		(
+		#{id},
+		#{userName},
+		#{password},
+		#{name},
+		#{age},
+		#{sex},
+		#{birthday},
+		#{created},
+		#{updated})
+		
+	</insert>
+	
+	<delete id="deleteUser" parameterType="string">
+		delete from tb_user
+		where id = #{id}
+	
+	</delete>
 </mapper>
