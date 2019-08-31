@@ -6,6 +6,7 @@ import demo.entity.User;
 
 public interface UserDao {
 	public User queryUserById(int i);
+	public User queryOneUser(int i);
 	public List<User> queryUserAll();
 
     public void insertUser(User user);

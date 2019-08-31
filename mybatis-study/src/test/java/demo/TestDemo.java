@@ -32,20 +32,28 @@ public class TestDemo {
 				.build(is);
 		// 创建Session实例
 		sqlSession = sqlSessionFactory.openSession();
-		ud = new UserDaoImpl(sqlSession);		
+		//ud = new UserDaoImpl(sqlSession);
+		ud = sqlSession.getMapper(UserDao.class);
 	}
 	
 	@Test
-	public void testSelect(){		
-		User user = ud.queryUserById(2);
-		logger.info(user.toString());
+	public void testSelect(){
+		User user = ud.queryUserById(4);
+		//select xml中id必须与接口中的一致
+		//User user = ud.queryOneUser(4);
+		System.out.println(user.getClass().getName());
+		//List<User> users = ud.queryUserById(2);
+		/*for(User user:users){
+			System.out.println(user);
+		}*/
+		
+		System.out.println(user);
 	}
 	
 	@Test
 	public void testSelectAll(){
 		List<User> queryUserAll = ud.queryUserAll();
 		for (User user : queryUserAll) {
-			//System.out.println(user);
 			logger.info(user.toString());
 		}
 	}
@@ -56,9 +64,9 @@ public class TestDemo {
 		u.setId("2");
 		u.setAge(13);
 		u.setName("zhangsan");
-		u.setPassword("789");
+		u.setUserName("test");
+		u.setPassword("9999999");
 		u.setBirthday(new SimpleDateFormat("yyyy-MM-dd").parse("2013-09-29"));
-		u.setCreated(new SimpleDateFormat("yyyy-MM-dd").parse("2013-09-29").toString());
 		ud.updateUser(u);
 		sqlSession.commit();
 	}
@@ -66,14 +74,18 @@ public class TestDemo {
 	@Test
 	public void insertUser() throws ParseException{
 		User u = new User();
-		u.setId("3");
 		u.setAge(18);
 		u.setName("6333");
 		u.setPassword("888");
 		u.setBirthday(new SimpleDateFormat("yyyy-MM-dd").parse("2013-09-29"));
-		u.setCreated(new SimpleDateFormat("yyyy-MM-dd").parse("2013-09-29").toString());
 		ud.insertUser(u);
 		sqlSession.commit();
 	}
 
+	@Test
+	public void deleteUser(){
+		User u = new User();
+		ud.deleteUser("2");
+		sqlSession.commit();
+	}
 }

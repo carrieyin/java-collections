@@ -18,6 +18,9 @@ public class UserDaoImpl implements UserDao{
         return sqlSession.selectOne("UserDao.queryUserById", id);
     }
 
+	public User queryOneUser(int id){
+		return sqlSession.selectOne("UserDao.queryUserById", id);
+	}
 	public List<User> queryUserAll() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("UserDao.queryUserAll");

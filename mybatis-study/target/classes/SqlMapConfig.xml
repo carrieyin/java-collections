@@ -4,6 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!-- 根标签 -->
 <configuration>
+    <typeAliases>
+  	    <!-- 需要每个pojo类都配置一下 -->
+  		<!-- <typeAlias type="demo.entity.User" alias="User"/> -->
+  		
+  		<!-- 扫描指定包下面的所有类 -->
+  		<package name="demo.entity"/>
+  		
+  	</typeAliases>
    <!-- 环境，可以配置多个，default：指定采用哪个环境 -->
    <environments default="test">
       <!-- id：唯一标识 -->
@@ -19,7 +27,10 @@
          </dataSource>
       </environment>
    </environments>
+  
+  
    <mappers>
      <mapper resource="mappers/UserMapper.xml" />
+     <mapper resource="mappers/MyMapper.xml"></mapper>
    </mappers>
 </configuration>

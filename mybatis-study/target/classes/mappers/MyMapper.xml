@@ -1,0 +1,94 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="demo.dao.UserMapper">
+	<!-- id要和接口中方法一致 -->
+	<select id="login" resultType="demo.entity.User">
+		select * from tb_user
+		where user_name=#{userName} and password=#{password}
+	</select>
+	
+	<select id="queryUserByTable" parameterType="String" resultType="demo.entity.User">
+		select  
+			id as id, 
+	        user_name as userName,
+	        password as password,
+	        name as name,
+	        age as age,
+	        sex as sex,
+	        birthday as birthday,
+	        created as created,
+	        updated as updated
+        <!-- 必须使用$ -->
+        from ${tableName}
+	</select>
+	
+	<select id="queryUserByID" parameterType="String" resultType="demo.entity.User">
+		<!-- select * from tb_user -->
+		select <include refid="CommonSql.commonSql"></include> from tb_user
+		where id = #{id}
+	</select>
+	<!-- 定义result类型 id唯一标识， automapping 驼峰匹配-->
+	<resultMap type="User" id="resultUser" autoMapping="true">
+	    <!-- 数据库主键对应 -->
+		<id column="id" property="id"/>
+		<!-- 列名 和 java实体类中的属性名对应关系 -->
+		<result column="user_name" property="userName"/>
+	</resultMap>
+	<!-- <select id="queryUserAll" resultType="demo.entity.User"> -->
+	<select id="queryUserAll" resultMap="resultUser">
+		select
+			*
+		 from tb_user
+	</select>
+	
+	<insert id="insertUser" parameterType="demo.entity.User">
+	 	insert into
+	 	tb_user
+		 	(
+		 	user_name,
+		 	password,
+		 	name,
+		 	age,
+		 	sex,
+		 	birthday,
+		 	created,
+		 	updated
+		 	)
+	 	values
+		 	(
+		 	#{userName},
+		 	#{password},
+		 	#{name},
+		 	#{age},
+		 	#{sex},
+		 	#{birthday},
+		 	created = now(),
+		 	updated = now()
+		 	)
+	</insert>
+	
+	<delete id="deleteUserById" >
+		delete from 
+		tb_user
+		where id = #{id}
+	</delete>
+	
+	<update id="updateUser" parameterType="demo.entity.User">
+		update tb_user
+		<trim prefix="set" suffixOverrides=",">
+		
+		<if test="userName!=null"> user_name=#{userName},</if>
+		<if test="password!=null"> password=#{password},</if>
+		<if test="name!=null"> name=#{name},</if>
+		<if test="age!=null"> age=#{age},</if>
+		<if test="sex!=null"> sex=#{sex},</if>
+		<if test="birthday!=null"> birthday=#{birthday},</if>
+		<if test="created!=null"> created=#{created},</if>
+		updated = now()
+		</trim>
+		where id = #{id}
+	</update>
+	
+</mapper>
