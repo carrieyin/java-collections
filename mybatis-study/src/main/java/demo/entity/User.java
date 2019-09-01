@@ -1,10 +1,16 @@
 package demo.entity;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class User {
-    private String id;
+// implement Serializable for cached 
+public class User implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3333333;
+	private String id;
     private String userName;
     private String password;
     private String name;

@@ -23,4 +23,15 @@ public interface UserMapper {
 	
 	public void updateUser(User user);
 	
+	//查询所有男性，并根据姓名模糊匹配
+	public List<User> queryUserListByName(@Param("name") String name);
+	
+	//根据name或者age查询
+	public List<User> queryUserByNameOrAge(@Param("name")String name, @Param("age")int age);
+	
+	//根据name和age查询
+	public List<User> queryUserByNameAndAge(@Param("name")String name, @Param("age") int age);
+	
+	//根据传入id数组查询
+	public List<User> queryUserInArrays(@Param("ids")String[] ids);
 }

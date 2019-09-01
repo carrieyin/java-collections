@@ -3,6 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="demo.dao.UserMapper">
+	<cache></cache>
 	<!-- id要和接口中方法一致 -->
 	<select id="login" resultType="demo.entity.User">
 		select * from tb_user
@@ -90,5 +91,55 @@
 		</trim>
 		where id = #{id}
 	</update>
+	
+	<select id="queryUserListByName" resultMap="resultUser">
+		select * from tb_user
+		where sex='1'  
+		
+		<if test="name!=null and name.trim()!=''">
+		 and name like '%${name}%'
+		</if>
+				
+	</select>
+	<!-- 相当于if  else if   else -->
+	<select id="queryUserByNameOrAge" resultMap="resultUser">
+		select * from tb_user where
+		<choose>
+			<when test="name!=null and name.trim() != ''">
+				name like '%${name}%'
+			</when>
+			
+			<when test="age!=null">
+				age = #{age}
+			</when>
+			
+			<otherwise>
+				name = '鹏程'
+			</otherwise>
+			
+			</choose>
+	</select>
+	<!-- 多出一个and 启动去除，缺少或者多出多个会报错 -->
+	<select id = "queryUserByNameAndAge" resultMap="resultUser">
+		select * from tb_user
+		<where>
+			<if test="name!=null and name.trim() != ''">
+				and name like'%${name}%'
+			</if>
+			
+			<if test="age!=null">
+				and age = #{age}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询传入一个数组  foreach -->
+	<select id="queryUserInArrays" resultMap="resultUser">
+		select * from tb_user where id in
+		<foreach collection="ids" item="id" open="("  close=")" separator=",">
+			#{id}
+		</foreach>
+	</select>
+	
 	
 </mapper>

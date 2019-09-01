@@ -11,6 +11,8 @@
   	<!-- 开启驼峰配置 数据库中下划线的字段名改成驼峰格式的名称 -->
   	<settings>
   		<setting name="mapUnderscoreToCamelCase" value="true"/>
+  		<!--二级缓存关闭  -->
+  		<!-- <setting name="cacheEnabled" value="false"/> -->
   	</settings>
   	<!-- 类名设置别名  -->
   	<typeAliases>
