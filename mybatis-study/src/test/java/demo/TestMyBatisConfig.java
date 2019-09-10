@@ -63,7 +63,7 @@ public class TestMyBatisConfig {
 	}
 	
 	@Test
-	public void testSelectByNameAndAge(){
+	public void testSelectByNameandAge(){
 		List<User> userList = userMapper.queryUserByNameAndAge("≈Ù≥Ã", 18);
 		for(User u: userList){
 			logger.info(u.toString());

@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace接口名一致 -->
+<mapper namespace="demo.dao.OrderMapper">
+<!-- id与mapper中方法一致 -->
+	<select id="selectOrderUserByOrderNumber" resultType="demo.entity.OrderUser">
+		SELECT * FROM tb_order o
+		LEFT JOIN tb_user u
+		ON o.user_id = u.id WHERE o.order_number = #{number}
+	</select>
+
+</mapper>

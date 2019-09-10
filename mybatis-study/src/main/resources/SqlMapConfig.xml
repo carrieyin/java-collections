@@ -4,6 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!-- 根标签 -->
 <configuration>
+	<settings>
+  		<setting name="mapUnderscoreToCamelCase" value="true"/>
+  		
+  	</settings>
     <typeAliases>
   	    <!-- 需要每个pojo类都配置一下 -->
   		<!-- <typeAlias type="demo.entity.User" alias="User"/> -->
@@ -30,7 +34,8 @@
   
   
    <mappers>
-     <mapper resource="mappers/UserMapper.xml" />
-     <mapper resource="mappers/MyMapper.xml"></mapper>
+     <!-- <mapper resource="mappers/UserMapper.xml" />
+     <mapper resource="mappers/MyMapper.xml"></mapper> -->
+     <mapper resource="mappers/OrderMapper.xml"/>
    </mappers>
 </configuration>

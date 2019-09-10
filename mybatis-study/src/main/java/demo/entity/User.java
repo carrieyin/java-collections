@@ -45,6 +45,7 @@ public class User implements Serializable{
 		this.sex = sex;
 		this.birthday = birthday;
 	}
+	
 	public String getId() {
         return id;
     }
