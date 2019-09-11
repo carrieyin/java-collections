@@ -48,12 +48,13 @@ public class TestOrderMapper {
 	@Test
 	public void testSelectOrderWithOrderDetailByOrderNumber(){
 		Order orderUser = order.selectOrderWithOrderDetailByOrderNumber("201807010001");
-		List<OrderDetail> orderDetailList = orderUser.getOrderDetailList();
-		for (OrderDetail orderDetail : orderDetailList) {
-			System.out.println(orderDetail);
-		}
-		int size = orderDetailList.size();
-		System.out.println("size :  " + size);
+		log.info("==============> " + orderUser.toString());
+		//List<OrderDetail> orderDetailList = orderUser.getOrderDetailList();
+//		for (OrderDetail orderDetail : orderDetailList) {
+//			System.out.println(orderDetail);
+//		}
+//		int size = orderDetailList.size();
+//		System.out.println("size :  " + size);
 	}
 	
 }

@@ -12,11 +12,15 @@ public class Order {
     private User user;
     List<OrderDetail> orderDetailList;
     
-    @Override
-    public String toString() {
-    	// TODO Auto-generated method stub
-    	return "id:" + id + "userId:" + userId + "orderNumber:" + orderNumber;
-    }
+   
+    
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", userId=" + userId + ", orderNumber="
+				+ orderNumber + ", created=" + created + ", updated=" + updated
+				+ ", user=" + user + ", orderDetailList=" + orderDetailList
+				+ "]";
+	}
 
 	public List<OrderDetail> getOrderDetailList() {
 		return orderDetailList;
