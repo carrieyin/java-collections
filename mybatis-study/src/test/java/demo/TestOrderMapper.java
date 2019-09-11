@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import demo.dao.OrderMapper;
+import demo.entity.Order;
 import demo.entity.OrderUser;
 
 public class TestOrderMapper {
@@ -34,4 +35,12 @@ public class TestOrderMapper {
 		log.info(orerUser.toString());
 		System.out.println(orerUser);
 	}
+	
+	@Test
+	public void testSelectOrderByOrderNumber(){
+		Order orderUser = order.selectOrderByOrderNumber("201807010001");
+		log.info(orderUser.toString());
+		System.out.println(orderUser);
+	}
+	
 }

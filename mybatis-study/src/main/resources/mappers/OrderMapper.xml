@@ -10,4 +10,16 @@
 		ON o.user_id = u.id WHERE o.order_number = #{number}
 	</select>
 
+	<resultMap id="OrderUserResultMap" type="demo.entity.Order" >
+		<id column="id" property="id"/>
+	<!-- 子对象 -->
+		<association property="user" javaType="demo.entity.User" autoMapping="true">
+			<id column="user_id" property="id"/>
+		</association>
+	</resultMap>
+	<select id="selectOrderByOrderNumber" resultMap="OrderUserResultMap">
+		SELECT * FROM tb_order o
+		LEFT JOIN tb_user u
+		ON o.user_id = u.id WHERE o.order_number = #{number}
+	</select>
 </mapper>
