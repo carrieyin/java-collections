@@ -2,6 +2,7 @@ package demo;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import demo.dao.OrderMapper;
 import demo.entity.Order;
+import demo.entity.OrderDetail;
 import demo.entity.OrderUser;
 
 public class TestOrderMapper {
@@ -39,8 +41,19 @@ public class TestOrderMapper {
 	@Test
 	public void testSelectOrderByOrderNumber(){
 		Order orderUser = order.selectOrderByOrderNumber("201807010001");
+		log.info(orderUser.getUser().toString());
 		log.info(orderUser.toString());
-		System.out.println(orderUser);
+	}
+	
+	@Test
+	public void testSelectOrderWithOrderDetailByOrderNumber(){
+		Order orderUser = order.selectOrderWithOrderDetailByOrderNumber("201807010001");
+		List<OrderDetail> orderDetailList = orderUser.getOrderDetailList();
+		for (OrderDetail orderDetail : orderDetailList) {
+			System.out.println(orderDetail);
+		}
+		int size = orderDetailList.size();
+		System.out.println("size :  " + size);
 	}
 	
 }

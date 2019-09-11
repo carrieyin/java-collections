@@ -8,4 +8,5 @@ import demo.entity.OrderUser;
 public interface OrderMapper {
 	public OrderUser selectOrderUserByOrderNumber(@Param("number") String number);
 	public Order selectOrderByOrderNumber(@Param("number")String number);
+	public Order selectOrderWithOrderDetailByOrderNumber(String number);
 }

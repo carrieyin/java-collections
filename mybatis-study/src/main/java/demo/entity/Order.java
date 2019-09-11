@@ -1,6 +1,7 @@
 package demo.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Order {
 	private Integer id;
@@ -9,12 +10,21 @@ public class Order {
     private Date created;
     private Date updated;
     private User user;
+    List<OrderDetail> orderDetailList;
     
     @Override
     public String toString() {
     	// TODO Auto-generated method stub
     	return "id:" + id + "userId:" + userId + "orderNumber:" + orderNumber;
     }
+
+	public List<OrderDetail> getOrderDetailList() {
+		return orderDetailList;
+	}
+
+	public void setOrderDetailList(List<OrderDetail> orderDetailList) {
+		this.orderDetailList = orderDetailList;
+	}
 
 	public User getUser() {
 		return user;
