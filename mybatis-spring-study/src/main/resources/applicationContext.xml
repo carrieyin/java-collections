@@ -14,7 +14,7 @@
        http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
 <!-- 加载配置文件 -->
-<context:property-placeholder location="classpath:properties/*.properties"/>
+<context:property-placeholder location="classpath:db.properties"/>
 
 <!-- 数据库连接池 用于 SqlSessionFactory-->
  <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
@@ -33,7 +33,7 @@
  	<!-- 设置datasource -->
  	<property name="dataSource" ref="dataSource" />
  	<!-- 设置自动扫描mapper扫描文件 -->
- 	<property name="mapperLocations" value="classpath:mappers/*.xml" />
+ 	<property name="mapperLocations" value="classpath:mappers/UserMapper.xml" />
  </bean>
  <!--DAO 包，spring自动扫描  -->
  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
