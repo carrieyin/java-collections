@@ -17,33 +17,7 @@ public class User {
     private Date birthday;
     private String created;
     private String updated;
-    public User(){
-    	
-    }
-    public User(String userName, String password, String name, Integer age,
-			Integer sex, Date birthday) {
-		super();
-		this.userName = userName;
-		this.password = password;
-		this.name = name;
-		this.age = age;
-		this.sex = sex;
-		this.birthday = birthday;
-	}
     
-
-	public User(String id, String userName, String password, String name,
-			Integer age, Integer sex, Date birthday) {
-		super();
-		this.id = id;
-		this.userName = userName;
-		this.password = password;
-		this.name = name;
-		this.age = age;
-		this.sex = sex;
-		this.birthday = birthday;
-	}
-	
 	public String getId() {
         return id;
     }
