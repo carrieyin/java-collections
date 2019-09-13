@@ -8,8 +8,7 @@
     
   <modules>
   	<module>mybatis-study</module>
-    <module>spring-mybatis</module>
-    <module>mybatis-spring</module>
-    <module>spring-mybatis-study</module>
+    <module>mybatis-spring-study</module>
+	<module>mybatis-spring-study2</module>
   </modules>
 </project>

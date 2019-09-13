@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  <configuration>
+  
+  	<settings>
+  		<setting name="mapUnderscoreToCamelCase" value="true"/>
+  	</settings>
+  	<!-- 类名设置别名  -->
+  	<typeAliases>
+  	    <!-- 需要每个pojo类都配置一下 -->
+  		<!-- <typeAlias type="demo.entity.User" alias="User"/> -->
+  		
+  		<!-- 扫描指定包下面的所有类 -->
+  		<package name="demo.entity"/>
+  		
+  	</typeAliases>
+  	<!-- 插件？？ -->
+  
+  	
+  	
+  </configuration>
