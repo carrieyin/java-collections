@@ -23,6 +23,9 @@
 		
 		<collection property="orderDetailList" javaType="List" ofType="demo.entity.OrderDetail" autoMapping="true">
 			<id column="odid" property="id"/>
+			<association property="item" javaType="demo.entity.Item" autoMapping="true">
+				<id column="itid" property="id"/>
+			</association>
 		</collection>
 	</resultMap>
 	
@@ -39,6 +42,17 @@
 	   from tb_order o
 	   left join tb_user u on o.user_id=u.id
 	   left join tb_orderdetail od on o.id=od.order_id
+	   where o.order_number = #{number}
+   </select>
+   
+   <select id="selectOrderWithODAndItemByOrderNumber" resultMap="OrderUserResultMap">
+   	select  u.id as uid, o.id as oid, od.id as odid , it.id as itid,
+	   o.created as ocreated ,o.updated as oupdated , u.created as ucreated,u.updated as uupdated,
+	   o.*,u.*,od.*,it.* 
+	   from tb_order o
+	   left join tb_user u on o.user_id=u.id
+	   left join tb_orderdetail od on o.id=od.order_id
+	   left join tb_item it on od.item_id = it.id
 	   where o.order_number = #{number}
    </select>
 
