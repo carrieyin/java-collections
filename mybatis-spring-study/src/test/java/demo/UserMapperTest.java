@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import demo.dao.UserMapper;
 import demo.entity.User;
-
+//https://blog.csdn.net/hellozpc/article/details/80878563#14sql_2058
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath:applicationContext.xml")
 public class UserMapperTest {
