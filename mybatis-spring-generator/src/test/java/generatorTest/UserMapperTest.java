@@ -23,11 +23,11 @@ import com.ydd.study.generated.mapper.UserMapper;
 */ 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
-public class GeneratorTest {
+public class UserMapperTest {
 	@Autowired
 	private UserMapper userMapper;
 	
-	Logger logger = LoggerFactory.getLogger(GeneratorTest.class);
+	Logger logger = LoggerFactory.getLogger(UserMapperTest.class);
 	
 	@Test
 	public void testDeletByID(){
