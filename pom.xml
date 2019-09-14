@@ -12,6 +12,7 @@
 	<module>mybatis-spring-study2</module>
 	<module>mybatis-generator</module>
 	<module>mybatis-spring-generator</module>
+	<module>mybatis-spring-generator-pagehelper</module>
   </modules>
   
   <dependencies>

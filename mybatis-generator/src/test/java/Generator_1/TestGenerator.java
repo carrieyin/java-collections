@@ -34,7 +34,7 @@ public class TestGenerator {
 	//openSession
 	@Test
 	public void testDeleteByPrimaryKey(){
-		userMapper.deleteByPrimaryKey(9);
+		userMapper.deleteByPrimaryKey(8);
 	}
 	
 	
