@@ -26,7 +26,7 @@ public class TestOrderMapper {
 	public void setUpBefore() throws IOException{
 		InputStream input = Resources.getResourceAsStream("SqlMapConfig.xml");
 		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(input);
-		SqlSession sqlSession = sqlSessionFactory.openSession();
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		orderMapper = sqlSession.getMapper(OrderMapper.class);
 				
 	}
