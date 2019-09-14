@@ -56,9 +56,9 @@
         </javaClientGenerator>
            
         <table tableName="${generator.tableName}" domainObjectName="${generator.domainObjectName}"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true">
             <!-- 忽略列，不生成bean 字段
             <ignoreColumn column="FRED" />-->
             <!-- 指定列的java数据类型
